@@ -1,0 +1,28 @@
+name: heart_at_time
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.4 <4.0.0"
+
+dependencies:
+  fl_chart: ^0.67.0
+  flutter:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path_android: "assets/icon/heart.png"
+  image_path_ios: "assets/icon/heart.png"
