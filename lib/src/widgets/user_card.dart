@@ -1,51 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:heart_at_time/distance_user_page.dart';
 
 class DistanceUserCard extends StatelessWidget {
   const DistanceUserCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.1),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(children: [
-                Text(
-                  "John Smith  ",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Desconectado",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffFFF4EA),
-                      backgroundColor: Color(0xff028B95)),
-                ),
-              ]),
-              Row(
-                children: [
+    return TextButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DistanceUserPage()),
+        );
+      },
+      style: TextButton.styleFrom(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          splashFactory: NoSplash.splashFactory),
+      child: Container(
+        margin: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.1),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(children: [
                   Text(
-                    "Estado: ",
+                    "John Smith  ",
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   Text(
-                    "Desconocido",
+                    "Desconectado",
                     textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xffFFF4EA),
+                        backgroundColor: Color(0xff028B95)),
                   ),
-                ],
-              )
-            ],
-          ),
-          Heart(),
-        ],
+                ]),
+                Row(
+                  children: [
+                    Text(
+                      "Estado: ",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black),
+                    ),
+                    Text(
+                      "Desconocido",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Heart(),
+          ],
+        ),
       ),
     );
   }

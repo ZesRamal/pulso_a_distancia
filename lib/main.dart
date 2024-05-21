@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/home_page.dart';
-import 'package:heart_at_time/src/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -21,7 +20,7 @@ class MainApp extends StatelessWidget {
               selectionColor: Colors.blueGrey[50],
               selectionHandleColor: Color(0xff0096D1)),
           textTheme: GoogleFonts.oxygenTextTheme(Theme.of(context).textTheme)),
-      home: WelcomeScreen(),
+      home: HomePage(),
     );
   }
 }
