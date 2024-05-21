@@ -87,7 +87,42 @@ class _ListViewScreenState extends State<ListViewScreen> {
                       ),
                     ]),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text("Añadir Paciente"),
+                              content: Container(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Id de Usuario:"),
+                                    TextField(),
+                                  ],
+                                ),
+                              ),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Cancelar",
+                                      style: TextStyle(color: Colors.black),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Enviar solicitud",
+                                      style: TextStyle(color: Colors.black),
+                                    ))
+                              ],
+                            ));
+                  },
                   child: Icon(
                     Icons.add,
                     color: Color(0xffFFF4EA),

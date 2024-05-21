@@ -12,6 +12,8 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
+  TextEditingController _dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +80,60 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ),
                     ]),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text("Buscar fecha"),
+                              content: Container(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Fecha:"),
+                                    TextField(
+                                      controller: _dateController,
+                                      decoration: InputDecoration(
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        labelText: "AAAA/MM/DD",
+                                        filled: true,
+                                        prefixIcon: Icon(Icons.calendar_today),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Color(0xff3EBDC6))),
+                                      ),
+                                      readOnly: true,
+                                      onTap: () {
+                                        _selectDate();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Cancelar",
+                                      style: TextStyle(color: Colors.black),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Aceptar",
+                                      style: TextStyle(color: Colors.black),
+                                    ))
+                              ],
+                            ));
+                  },
                   child: Icon(
                     Icons.calendar_month_outlined,
                     color: Color(0xffFFF4EA),
@@ -91,5 +146,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _selectDate() async {
+    DateTime? _picked = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+        initialDate: DateTime.now());
+
+    if (_picked != null) {
+      setState(() {
+        _dateController.text = _picked.toString().split(" ")[0];
+      });
+    }
   }
 }
