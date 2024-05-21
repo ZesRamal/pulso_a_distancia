@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/home_page.dart';
 import 'package:heart_at_time/src/screens/welcome_screen.dart';
@@ -9,6 +11,12 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
+  Future<void> initializeFirebase() async {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
