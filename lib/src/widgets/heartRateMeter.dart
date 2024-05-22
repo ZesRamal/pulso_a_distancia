@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HeartRateMeter extends StatelessWidget {
+  final int bpm;
+  final String tiempo;
+
   const HeartRateMeter({
     super.key,
+    required this.bpm,
+    this.tiempo = '',
   });
 
   @override
@@ -31,7 +36,7 @@ class HeartRateMeter extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "75",
+                    bpm.toString(),
                     style: TextStyle(
                         color: Color(0xff0096D1), fontSize: 64, height: 1.1),
                   ),
@@ -45,7 +50,7 @@ class HeartRateMeter extends StatelessWidget {
             ],
           ),
           Text(
-            "medido hace 10 mins",
+            "",
             textAlign: TextAlign.center,
             style:
                 TextStyle(fontSize: 16, color: Color(0xff0096D1), height: 0.1),
