@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/src/screens/history_screen.dart';
 import 'package:heart_at_time/src/screens/listview_screen.dart';
@@ -13,7 +18,92 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  BluetoothConnection? _connection;
+  bool _isConnected = false;
+  bool isLoading = false;
   int _currentIndex = 0;
+  String message = '';
+
+  Future<void> _connectToDevice() async {
+    setState(() {
+      isLoading = true;
+    });
+    final List<BluetoothDevice> devices =
+        await FlutterBluetoothSerial.instance.getBondedDevices();
+    final BluetoothDevice device =
+        devices.firstWhere((e) => e.name == "ESP32test");
+    final BluetoothConnection connection =
+        await BluetoothConnection.toAddress(device.address);
+    setState(() {
+      _connection = connection;
+      _isConnected = true;
+      isLoading = false;
+    });
+  }
+
+  Future<void> _disconnectFromDevice() async {
+    await _connection!.finish();
+    setState(() {
+      _connection = null;
+      _isConnected = false;
+    });
+  }
+
+  Future<void> _sendData(int value) async {
+    if (_connection != null) {
+      _connection!.input?.listen((Uint8List data) {
+        String dataStr = ascii.decode(data);
+        message += dataStr;
+        if (dataStr.contains('\n')) {
+          _processData(message.trim()); // Process and upload the complete message
+          message = '';   // Clear buffer to accept new string
+        }
+      });
+      await _connection!.output.allSent;
+    }
+  }
+
+  void _processData(String data) {
+    // Assuming data format is like: "78,16 de mayo de 2024, 12:47:43 p.m. UTC-7"
+    List<String> parts = data.split(',');
+    if (parts.length == 3) {
+      int bpm = int.parse(parts[0]);
+      String estado = bpm > 0 ? 'true' : 'false';
+      String tiempo = parts[2];
+
+      Map<String, dynamic> bpmData = {
+        'bpm': bpm,
+        'estado': estado == 'true',
+        'tiempo': tiempo,
+      };
+
+      _uploadData(bpmData);
+    }
+  }
+
+  Future<void> _uploadData(Map<String, dynamic> data) async {
+    String userId = "exampleUserId"; // Replace with actual user ID
+    CollectionReference users = FirebaseFirestore.instance.collection('usuarios');
+
+    try {
+      DocumentReference userDoc = users.doc(userId);
+      DocumentSnapshot userSnapshot = await userDoc.get();
+
+      if (userSnapshot.exists) {
+        // Update existing user document
+        userDoc.update({
+          'historialBPM': FieldValue.arrayUnion([data])
+        });
+      } else {
+        // Create new user document if it doesn't exist
+        userDoc.set({
+          'historialBPM': [data]
+        });
+      }
+    } catch (e) {
+      print('Error uploading data: $e');
+    }
+  }
 
   List<Widget> screens = [
     MyStateScreen(),

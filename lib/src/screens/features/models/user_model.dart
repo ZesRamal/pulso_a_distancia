@@ -17,6 +17,8 @@ class Usuario {
     required this.password,
   });
 
+  
+
   factory Usuario.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
     return Usuario(
