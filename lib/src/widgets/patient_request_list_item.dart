@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class PatientRequestListItem extends StatelessWidget {
+  final String name;
   const PatientRequestListItem({
     super.key,
+    required this.name,
   });
 
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       title: Text(
-        "John Smith",
+        name,
         style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05),
       ),
       children: <Widget>[

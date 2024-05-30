@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heart_at_time/home_page.dart';
 import 'package:heart_at_time/src/screens/login_screen.dart';
 import 'package:heart_at_time/src/widgets/iconTitle.dart';
 import 'package:heart_at_time/src/widgets/inputField.dart';
@@ -52,7 +53,11 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      LongButton("Registrarse", () {}),
+                      LongButton("Registrarse", () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                            (Route route) => false);
+                      }),
                       TextWithButton("¿Tienes una cuenta?", "Inicia Sesión",
                           () {
                         Navigator.push(

@@ -57,7 +57,11 @@ class RequestListScreen extends StatelessWidget {
                                       0.04)),
                         ),
                         BarButtonSection(
-                          children: [RequestListItem()],
+                          children: [
+                            RequestListItem(
+                              name: "Jared Zaragoza",
+                            )
+                          ],
                         ),
                       ],
                     ),
@@ -75,7 +79,11 @@ class RequestListScreen extends StatelessWidget {
                                       0.04)),
                         ),
                         BarButtonSection(
-                          children: [PatientRequestListItem()],
+                          children: [
+                            PatientRequestListItem(
+                              name: "Cesar Ramos",
+                            )
+                          ],
                         ),
                       ],
                     ),

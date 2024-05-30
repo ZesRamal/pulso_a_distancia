@@ -72,7 +72,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                 children: [
                                   TextField(
                                     decoration: InputDecoration(
-                                        hintText: "John Smith",
+                                        hintText: "Oscar Anguiano",
                                         enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide.none),
                                         focusedBorder: UnderlineInputBorder(

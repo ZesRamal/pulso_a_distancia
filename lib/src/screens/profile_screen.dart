@@ -4,6 +4,7 @@ import 'package:heart_at_time/src/screens/device_status_screen.dart';
 import 'package:heart_at_time/src/screens/edit_profile_screen.dart';
 import 'package:heart_at_time/src/screens/patients_list_screen.dart';
 import 'package:heart_at_time/src/screens/requests_list_screen.dart';
+import 'package:heart_at_time/src/screens/welcome_screen.dart';
 import 'package:heart_at_time/src/widgets/bar_button.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
@@ -35,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showIcon: true,
                 ),
                 Text(
-                  "John Smith",
+                  "Oscar Anguiano",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.width * 0.07),
@@ -138,7 +139,11 @@ class LogOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => WelcomeScreen()),
+              (Route route) => false);
+        },
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(Color(0xffFDA5A0)),
             fixedSize: MaterialStatePropertyAll(Size(

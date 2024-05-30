@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:heart_at_time/src/screens/features/models/user_model.dart';
 import 'package:heart_at_time/src/widgets/graph.dart';
 import 'package:heart_at_time/src/widgets/heartRateMeter.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
+import 'package:provider/provider.dart';
 
 class MyStateScreen extends StatefulWidget {
   const MyStateScreen({super.key});
@@ -13,6 +17,7 @@ class MyStateScreen extends StatefulWidget {
 }
 
 class _MyStateScreenState extends State<MyStateScreen> {
+  int last_bpm = 0;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<Usuario?> _fetchUsuario(String userId) async {
@@ -22,6 +27,23 @@ class _MyStateScreenState extends State<MyStateScreen> {
       return Usuario.fromFirestore(docSnapshot);
     }
     return null;
+  }
+
+  Timer? timer;
+
+  void initTimer() {
+    if (timer != null && timer!.isActive) return;
+
+    timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      //job
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -42,8 +64,11 @@ class _MyStateScreenState extends State<MyStateScreen> {
                   future: _fetchUsuario(
                       '7hCw9Yjrdv0Rbw1yF2zs'), // Aquí puedes pasar el ID de usuario deseado
                   builder: (context, snapshot) {
+                    initTimer();
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return HeartRateMeter(
+                        bpm: last_bpm,
+                      );
                     }
                     if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
@@ -55,6 +80,8 @@ class _MyStateScreenState extends State<MyStateScreen> {
                     Usuario usuario = snapshot.data!;
                     var latestRecord = usuario.historialBPM.last;
                     int bpm = latestRecord['bpm'];
+                    last_bpm = bpm;
+                    context.read<HeartRateProvider>().setHeartRate(bpm);
 
                     return HeartRateMeter(
                       bpm: bpm,

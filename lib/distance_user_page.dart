@@ -25,7 +25,7 @@ class _DistanceUserPageState extends State<DistanceUserPage> {
         backgroundColor: Color(0xff3EBDC6),
         centerTitle: true,
         title: Text(
-          "John Smith",
+          "Ricardo Escobar",
           style: TextStyle(color: Color(0xffFFF4EA)),
         ),
         iconTheme: IconThemeData(

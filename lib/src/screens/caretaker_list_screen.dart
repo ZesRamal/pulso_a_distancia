@@ -48,7 +48,9 @@ class _CaretakersListScreenState extends State<CaretakersListScreen> {
                           top: MediaQuery.of(context).size.width * 0.04),
                       child: ListSection(
                         children: [
-                          ListItem(),
+                          ListItem(
+                            name: "Gildegar Pasillas",
+                          ),
                         ],
                       ),
                     ),

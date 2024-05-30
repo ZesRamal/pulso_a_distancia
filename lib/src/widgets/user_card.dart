@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/distance_user_page.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
+import 'package:provider/provider.dart';
 
 class DistanceUserCard extends StatelessWidget {
   const DistanceUserCard({super.key});
@@ -27,13 +29,13 @@ class DistanceUserCard extends StatelessWidget {
               children: [
                 Row(children: [
                   Text(
-                    "John Smith  ",
+                    "Ricardo Escobar  ",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   Text(
-                    "Desconectado",
+                    "Conectado",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -50,7 +52,7 @@ class DistanceUserCard extends StatelessWidget {
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                     Text(
-                      "Desconocido",
+                      "Reposo",
                       textAlign: TextAlign.left,
                       style: TextStyle(color: Colors.black),
                     ),
@@ -66,11 +68,16 @@ class DistanceUserCard extends StatelessWidget {
   }
 }
 
-class Heart extends StatelessWidget {
+class Heart extends StatefulWidget {
   const Heart({
     super.key,
   });
 
+  @override
+  State<Heart> createState() => _HeartState();
+}
+
+class _HeartState extends State<Heart> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -93,7 +100,7 @@ class Heart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "--",
+              context.watch<HeartRateProvider>().heartRate.toString(),
               style: TextStyle(
                   color: Color(0xff0096D1), fontSize: 32, height: 1.1),
             ),

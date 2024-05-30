@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/graph2.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
-import 'package:heart_at_time/src/widgets/selector.dart';
+import 'package:heart_at_time/src/widgets/time_selector.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
+import 'package:provider/provider.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -13,6 +15,10 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   TextEditingController _dateController = TextEditingController();
+
+  int day = DateTime.now().day;
+  int month = DateTime.now().month;
+  int year = DateTime.now().year;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       iconName: Icons.access_time_sharp,
                       showIcon: true,
                     ),
-                    Selector(),
+                    TimeSelector(),
                     Container(
                       margin: EdgeInsets.symmetric(
                           vertical: MediaQuery.of(context).size.width * 0.03),
@@ -43,11 +49,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "-- - -- PPM",
+                            context
+                                    .watch<HeartRateProvider>()
+                                    .heartRate
+                                    .toString() +
+                                " ppm",
                             textAlign: TextAlign.left,
                           ),
                           Text(
-                            "DD/MM/AAAA",
+                            day.toString() +
+                                "/" +
+                                month.toString() +
+                                "/" +
+                                year.toString(),
                             textAlign: TextAlign.left,
                           )
                         ],

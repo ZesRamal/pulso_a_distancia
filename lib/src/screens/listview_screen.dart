@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/user_card.dart';
 
@@ -41,18 +42,19 @@ class _ListViewScreenState extends State<ListViewScreen> {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         top: BorderSide(
-                                            color: Color(0xff0096D1)))),
+                                            color: Color(0xff0096D1),
+                                            width: 10))),
                               ),
                             ),
                             Row(
                               children: [
                                 HeartWithIcon(
-                                  iconName: Icons.abc,
-                                  showIcon: false,
+                                  iconName: Icons.wifi,
+                                  showIcon: true,
                                 ),
                                 HeartWithIcon(
-                                  iconName: Icons.abc,
-                                  showIcon: false,
+                                  iconName: Icons.download,
+                                  showIcon: true,
                                 ),
                               ],
                             )
@@ -60,12 +62,11 @@ class _ListViewScreenState extends State<ListViewScreen> {
                         )
                       ],
                     ),
-                    DistanceUserCard(),
-                    DistanceUserCard(),
-                    DistanceUserCard(),
-                    DistanceUserCard(),
-                    DistanceUserCard(),
-                    DistanceUserCard(),
+                    Container(
+                        height: MediaQuery.of(context).size.height * 0.6,
+                        child: Column(
+                          children: [DistanceUserCard()],
+                        ))
                   ],
                 ),
               ),

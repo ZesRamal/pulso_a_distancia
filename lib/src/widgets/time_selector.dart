@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Selector extends StatefulWidget {
-  const Selector({super.key});
+class TimeSelector extends StatefulWidget {
+  const TimeSelector({super.key});
 
   @override
-  State<Selector> createState() => _SelectorState();
+  State<TimeSelector> createState() => _TimeSelectorState();
 }
 
-class _SelectorState extends State<Selector> {
+class _TimeSelectorState extends State<TimeSelector> {
   int _index = 0;
 
   @override

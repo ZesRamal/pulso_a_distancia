@@ -43,7 +43,9 @@ class PatientsListScreen extends StatelessWidget {
                           top: MediaQuery.of(context).size.width * 0.04),
                       child: ListSection(
                         children: [
-                          ListItem(),
+                          ListItem(
+                            name: "Ricardo Escobar",
+                          ),
                         ],
                       ),
                     ),
