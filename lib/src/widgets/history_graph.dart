@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
+import 'package:heart_at_time/src/providers/heart_rate_provider.dart';
 import 'package:provider/provider.dart';
 
 class HistoryChart extends StatefulWidget {

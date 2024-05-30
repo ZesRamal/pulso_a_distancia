@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/graph2.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
+import 'package:heart_at_time/src/widgets/history_graph.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
 import 'package:heart_at_time/src/widgets/selector.dart';
 
@@ -53,7 +54,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         ],
                       ),
                     ),
-                    LineChartSample2(),
+                    HistoryChart(),
                     InfoCard(
                       title: "Resumen",
                       info:

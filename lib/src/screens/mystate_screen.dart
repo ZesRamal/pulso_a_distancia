@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:heart_at_time/src/providers/heart_rate_provider.dart';
 import 'package:heart_at_time/src/screens/features/models/user_model.dart';
 import 'package:heart_at_time/src/widgets/graph.dart';
 import 'package:heart_at_time/src/widgets/heartRateMeter.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
+import 'package:provider/provider.dart';
 
 class MyStateScreen extends StatefulWidget {
   const MyStateScreen({super.key});
@@ -55,7 +57,22 @@ class _MyStateScreenState extends State<MyStateScreen> {
                     Usuario usuario = snapshot.data!;
                     var latestRecord = usuario.historialBPM.last;
                     int bpm = latestRecord['bpm'];
-
+                    var history = usuario.historialBPM.getRange(
+                        usuario.historialBPM.length - 30,
+                        usuario.historialBPM.length);
+                    List last10 = history
+                        .where((map) => map.containsKey('bpm'))
+                        .map((map) => map['bpm'])
+                        .toList();
+                    List last10Times = history
+                        .where((map) => map.containsKey('timestamp'))
+                        .map((map) => map['timestamp'])
+                        .toList();
+                    context.read<HeartRateProvider>().setHeartRate(bpm);
+                    context.read<HeartRateProvider>().addToHistory(last10);
+                    context
+                        .read<HeartRateProvider>()
+                        .addToHistoryTimes(last10Times);
                     return HeartRateMeter(
                       bpm: bpm,
                     );
