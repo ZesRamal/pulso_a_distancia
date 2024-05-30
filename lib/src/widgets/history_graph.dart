@@ -1,14 +1,16 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
+import 'package:provider/provider.dart';
 
-class LineChartSample2 extends StatefulWidget {
-  const LineChartSample2({super.key});
+class HistoryChart extends StatefulWidget {
+  const HistoryChart({super.key});
 
   @override
-  State<LineChartSample2> createState() => _LineChartSample2State();
+  State<HistoryChart> createState() => _HistoryChartState();
 }
 
-class _LineChartSample2State extends State<LineChartSample2> {
+class _HistoryChartState extends State<HistoryChart> {
   List<Color> gradientColors = [
     Color(0xffFF7979),
     Color(0xffFF7979),
@@ -58,14 +60,20 @@ class _LineChartSample2State extends State<LineChartSample2> {
         fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xff0096D1));
     Widget text;
     switch (value.toInt()) {
-      case 2:
-        text = const Text('10AM', style: style);
-        break;
       case 5:
-        text = const Text('11AM', style: style);
+        text = Text(
+            context.watch<HeartRateProvider>().last10Dates[0].toString(),
+            style: style);
         break;
-      case 8:
-        text = const Text('12PM', style: style);
+      case 15:
+        text = Text(
+            context.watch<HeartRateProvider>().last10Dates[1].toString(),
+            style: style);
+        break;
+      case 25:
+        text = Text(
+            context.watch<HeartRateProvider>().last10Dates[2].toString(),
+            style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -105,7 +113,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         show: true,
         drawVerticalLine: true,
         horizontalInterval: 100,
-        verticalInterval: 10,
+        verticalInterval: 30,
         getDrawingHorizontalLine: (value) {
           return const FlLine(
             color: Color(0xff0096D1),
@@ -150,23 +158,62 @@ class _LineChartSample2State extends State<LineChartSample2> {
             bottom: BorderSide(color: const Color(0xff0096D1), width: 1)),
       ),
       minX: 0,
-      maxX: 10,
+      maxX: 30,
       minY: 0,
       maxY: 210,
       lineBarsData: [
         LineChartBarData(
-          spots: const [
-            FlSpot(0, 78),
-            FlSpot(1, 80),
-            FlSpot(2, 90),
-            FlSpot(3, 75),
-            FlSpot(4, 84),
-            FlSpot(5, 92),
-            FlSpot(6, 83),
-            FlSpot(7, 91),
-            FlSpot(8, 99),
-            FlSpot(9, 110),
-            FlSpot(10, 125),
+          spots: [
+            FlSpot(0, context.watch<HeartRateProvider>().last10[0].toDouble()),
+            FlSpot(1, context.watch<HeartRateProvider>().last10[1].toDouble()),
+            FlSpot(2, context.watch<HeartRateProvider>().last10[2].toDouble()),
+            FlSpot(3, context.watch<HeartRateProvider>().last10[3].toDouble()),
+            FlSpot(4, context.watch<HeartRateProvider>().last10[4].toDouble()),
+            FlSpot(5, context.watch<HeartRateProvider>().last10[5].toDouble()),
+            FlSpot(6, context.watch<HeartRateProvider>().last10[6].toDouble()),
+            FlSpot(7, context.watch<HeartRateProvider>().last10[7].toDouble()),
+            FlSpot(8, context.watch<HeartRateProvider>().last10[8].toDouble()),
+            FlSpot(9, context.watch<HeartRateProvider>().last10[9].toDouble()),
+            FlSpot(
+                10, context.watch<HeartRateProvider>().last10[10].toDouble()),
+            FlSpot(
+                11, context.watch<HeartRateProvider>().last10[11].toDouble()),
+            FlSpot(
+                12, context.watch<HeartRateProvider>().last10[12].toDouble()),
+            FlSpot(
+                13, context.watch<HeartRateProvider>().last10[13].toDouble()),
+            FlSpot(
+                14, context.watch<HeartRateProvider>().last10[14].toDouble()),
+            FlSpot(
+                15, context.watch<HeartRateProvider>().last10[15].toDouble()),
+            FlSpot(
+                16, context.watch<HeartRateProvider>().last10[16].toDouble()),
+            FlSpot(
+                17, context.watch<HeartRateProvider>().last10[17].toDouble()),
+            FlSpot(
+                18, context.watch<HeartRateProvider>().last10[18].toDouble()),
+            FlSpot(
+                19, context.watch<HeartRateProvider>().last10[19].toDouble()),
+            FlSpot(
+                20, context.watch<HeartRateProvider>().last10[20].toDouble()),
+            FlSpot(
+                21, context.watch<HeartRateProvider>().last10[21].toDouble()),
+            FlSpot(
+                22, context.watch<HeartRateProvider>().last10[22].toDouble()),
+            FlSpot(
+                23, context.watch<HeartRateProvider>().last10[23].toDouble()),
+            FlSpot(
+                24, context.watch<HeartRateProvider>().last10[24].toDouble()),
+            FlSpot(
+                25, context.watch<HeartRateProvider>().last10[25].toDouble()),
+            FlSpot(
+                26, context.watch<HeartRateProvider>().last10[26].toDouble()),
+            FlSpot(
+                27, context.watch<HeartRateProvider>().last10[27].toDouble()),
+            FlSpot(
+                28, context.watch<HeartRateProvider>().last10[28].toDouble()),
+            FlSpot(
+                29, context.watch<HeartRateProvider>().last10[29].toDouble()),
           ],
           isCurved: true,
           gradient: LinearGradient(

@@ -79,9 +79,24 @@ class _MyStateScreenState extends State<MyStateScreen> {
 
                     Usuario usuario = snapshot.data!;
                     var latestRecord = usuario.historialBPM.last;
+                    var history = usuario.historialBPM.getRange(
+                        usuario.historialBPM.length - 30,
+                        usuario.historialBPM.length);
                     int bpm = latestRecord['bpm'];
                     last_bpm = bpm;
+                    List last10 = history
+                        .where((map) => map.containsKey('bpm'))
+                        .map((map) => map['bpm'])
+                        .toList();
+                    List last10Times = history
+                        .where((map) => map.containsKey('timestamp'))
+                        .map((map) => map['timestamp'])
+                        .toList();
                     context.read<HeartRateProvider>().setHeartRate(bpm);
+                    context.read<HeartRateProvider>().addToHistory(last10);
+                    context
+                        .read<HeartRateProvider>()
+                        .addToHistoryTimes(last10Times);
 
                     return HeartRateMeter(
                       bpm: bpm,
