@@ -25,6 +25,12 @@ Hardware:
 ### ¿Como Instalar y Correr el Proyecto?
 ### ¿Como usar el proyecto?
 ### Creditos
+
+* Project Manager: Oscar Anguiano Gonzalez
+* Frontend Dev: Cesar Francisco Ramos Leal
+* Backend Dev: Jared Zaragoza Rosales
+* Database Admin: Ricardo Escobar Ceseña
+
 ### Licencias
 
 [Licencia MIT](LICENSE)
