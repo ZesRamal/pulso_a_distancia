@@ -22,7 +22,7 @@ Hardware:
 * Sensor de pulso fotoeléctrico
   
 ### ¿Como Instalar y Correr el Proyecto?
-
+Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el código de arduino
 
 ### ¿Como usar el proyecto?
 ### Creditos
