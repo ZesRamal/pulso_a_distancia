@@ -23,7 +23,7 @@ Hardware:
   
 ## ¿Como Instalar y Correr el Proyecto?
 
-Necesitas tener instalado el SDK Flutter para ello te puedes apoyar en el siguiente enlace: [Flutter 🔎](https://docs.flutter.dev/get-started/install)
+Necesitas tener instalado el SDK Flutter, para ello te puedes apoyar en el siguiente enlace: [Flutter 🔎](https://docs.flutter.dev/get-started/install)
 
 Clona el repositorio y accede a la rama más estable con estos comandos:
 
