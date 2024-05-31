@@ -14,6 +14,7 @@ Software:
 * dart versión: 3.3.4-4.0.0
 * flutter versión: 3.19.2^
 * Android SDK versión: 21^
+* Arduino IDE versión: 2.3.2
 
 Hardware:
 * ESP-WROOM-32 ESP32 ESP-32S como modulo de desarollo para la parte del sensor
