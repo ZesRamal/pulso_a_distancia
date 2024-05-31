@@ -45,8 +45,6 @@ NOTA: Recuerda elegir el sistema operativo en el que estés trabajando.
 
 En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos dirigimos a la sección del perfil del usuario y nos aseguramos de que se establezca conexión a la app, con todo conectado, apoyar el sensor en cualquier parte del cuerpo que cuente con un vaso sanguíneo para empezaran a visualizar los datos del pulso en la pantalla principal de la aplicación.
 
-<img src="READMEAppScreenshots/BandConnectionScreen.jpg" width="300" height="700" alt="Alt text for your image">
-
 ## Créditos
 
 * Project Manager: [Oscar Anguiano Gonzalez](https://github.com/Oscar060502)
