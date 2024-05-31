@@ -25,11 +25,11 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           textSelectionTheme: TextSelectionThemeData(
-              cursorColor: Color(0xff0096D1),
+              cursorColor: const Color(0xff0096D1),
               selectionColor: Colors.blueGrey[50],
-              selectionHandleColor: Color(0xff0096D1)),
+              selectionHandleColor: const Color(0xff0096D1)),
           textTheme: GoogleFonts.oxygenTextTheme(Theme.of(context).textTheme)),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

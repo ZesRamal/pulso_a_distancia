@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// El widget [ListSection] muestra una sección de lista con contenido desplazable.
 class ListSection extends StatelessWidget {
   final List<Widget> children;
   const ListSection({
@@ -19,7 +20,7 @@ class ListSection extends StatelessWidget {
               bottom: MediaQuery.of(context).size.width * 0.1,
               top: MediaQuery.of(context).size.width * 0.03),
           decoration: BoxDecoration(
-              border: Border.all(color: Color(0xff0096D1)),
+              border: Border.all(color: const Color(0xff0096D1)),
               borderRadius: BorderRadius.circular(15),
               color: Colors.white),
           child: Column(

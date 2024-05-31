@@ -5,6 +5,7 @@ import 'package:heart_at_time/src/screens/listview_screen.dart';
 import 'package:heart_at_time/src/screens/mystate_screen.dart';
 import 'package:heart_at_time/src/screens/profile_screen.dart';
 
+/// La página [HomePage] es la pantalla principal de la aplicación, que muestra diferentes secciones y permite al usuario navegar entre ellas.
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -16,16 +17,16 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   List<Widget> screens = [
-    MyStateScreen(),
-    ListViewScreen(),
-    HistoryScreen(),
-    ProfileScreen()
+    const MyStateScreen(),
+    const ListViewScreen(),
+    const HistoryScreen(),
+    const ProfileScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFF4EA),
+      backgroundColor: const Color(0xffFFF4EA),
       body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           })
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_border), label: "Mi Estado"),
           BottomNavigationBarItem(
@@ -44,9 +45,9 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.person_3_outlined), label: "Perfil"),
         ],
-        backgroundColor: Color(0xff3EBDC6),
-        selectedItemColor: Color(0xffFFF4EA),
-        unselectedItemColor: Color(0xffFFF4EA),
+        backgroundColor: const Color(0xff3EBDC6),
+        selectedItemColor: const Color(0xffFFF4EA),
+        unselectedItemColor: const Color(0xffFFF4EA),
         selectedLabelStyle: GoogleFonts.oxygen(),
         unselectedLabelStyle: GoogleFonts.oxygen(),
         type: BottomNavigationBarType.fixed,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// El widget [HeartRateMeter] muestra el ritmo cardíaco actual en forma de un medidor de frecuencia cardíaca.
 class HeartRateMeter extends StatelessWidget {
+  // El ritmo cardíaco actual en pulsos por minuto (bpm).
   final int bpm;
+  // El tiempo relacionado con el ritmo cardíaco.
   final String tiempo;
 
   const HeartRateMeter({
@@ -21,14 +24,14 @@ class HeartRateMeter extends StatelessWidget {
             children: [
               Icon(
                 Icons.favorite,
-                color: Color(0xffFDA5A0),
+                color: const Color(0xffFDA5A0),
                 size: 220,
                 shadows: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 10,
                     blurRadius: 25,
-                    offset: Offset(0, 0), // changes position of shadow
+                    offset: const Offset(0, 0), // changes position of shadow
                   ),
                 ],
               ),
@@ -37,10 +40,10 @@ class HeartRateMeter extends StatelessWidget {
                 children: [
                   Text(
                     bpm.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Color(0xff0096D1), fontSize: 64, height: 1.1),
                   ),
-                  Text(
+                  const Text(
                     "ppm",
                     style: TextStyle(
                         color: Color(0xff0096D1), fontSize: 24, height: 1),
@@ -49,7 +52,7 @@ class HeartRateMeter extends StatelessWidget {
               )
             ],
           ),
-          Text(
+          const Text(
             "",
             textAlign: TextAlign.center,
             style:

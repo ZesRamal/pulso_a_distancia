@@ -6,6 +6,7 @@ import 'package:heart_at_time/src/widgets/logInWith.dart';
 import 'package:heart_at_time/src/widgets/longButton.dart';
 import 'package:heart_at_time/src/widgets/textWithButton.dart';
 
+/// [SignUpScreen] es una pantalla para que los usuarios creen una nueva cuenta.
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -39,7 +40,7 @@ class SignUpScreen extends StatelessWidget {
                     titleSize: MediaQuery.of(context).size.width * 0.09,
                     subtitleSize: MediaQuery.of(context).size.width * 0.04,
                   ),
-                  Column(
+                  const Column(
                     children: [
                       InputField("Nombre", TextInputType.name),
                       InputField("Correo", TextInputType.emailAddress),
@@ -63,7 +64,7 @@ class SignUpScreen extends StatelessWidget {
                       }),
                     ],
                   ),
-                  LogInWith()
+                  const LogInWith()
                 ],
               ),
             ),

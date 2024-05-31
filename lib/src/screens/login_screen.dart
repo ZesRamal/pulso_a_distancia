@@ -6,6 +6,9 @@ import 'package:heart_at_time/src/widgets/logInWith.dart';
 import 'package:heart_at_time/src/widgets/longButton.dart';
 import 'package:heart_at_time/src/widgets/textWithButton.dart';
 
+/// [LogInScreen] es una pantalla que permite a los usuarios iniciar sesión en la aplicación.
+/// La pantalla incluye campos de entrada para el correo electrónico y la contraseña,
+/// botones para iniciar sesión, crear una cuenta y opciones para iniciar sesión con otros servicios.
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
 
@@ -31,6 +34,7 @@ class LogInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Título de la pantalla con ícono
                   IconTitle(
                     Icons.favorite,
                     "Inicia Sesión",
@@ -39,7 +43,8 @@ class LogInScreen extends StatelessWidget {
                     titleSize: MediaQuery.of(context).size.width * 0.09,
                     subtitleSize: MediaQuery.of(context).size.width * 0.04,
                   ),
-                  Column(
+                  // Campos de entrada para el correo y la contraseña
+                  const Column(
                     children: [
                       InputField("Correo", TextInputType.emailAddress),
                       InputField(
@@ -49,6 +54,7 @@ class LogInScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Botón de iniciar sesión y enlace para crear una cuenta nueva
                   Column(
                     children: [
                       LongButton("Iniciar Sesión", () {}),
@@ -61,7 +67,8 @@ class LogInScreen extends StatelessWidget {
                       }),
                     ],
                   ),
-                  LogInWith()
+                  // Opciones para iniciar sesión con otros servicios
+                  const LogInWith()
                 ],
               ),
             ),

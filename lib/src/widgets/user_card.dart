@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/distance_user_page.dart';
 
+/// El widget [DistanceUserCard] muestra información sobre un usuario y permite navegar a la página de detalles del usuario.
 class DistanceUserCard extends StatelessWidget {
   const DistanceUserCard({super.key});
 
@@ -19,7 +20,7 @@ class DistanceUserCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.1),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
@@ -66,6 +67,7 @@ class DistanceUserCard extends StatelessWidget {
   }
 }
 
+/// El widget [Heart] muestra un icono de corazón con un valor de frecuencia cardíaca.
 class Heart extends StatelessWidget {
   const Heart({
     super.key,
@@ -78,18 +80,18 @@ class Heart extends StatelessWidget {
       children: [
         Icon(
           Icons.favorite,
-          color: Color(0xffFDA5A0),
+          color: const Color(0xffFDA5A0),
           size: 100,
           shadows: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 10,
               blurRadius: 25,
-              offset: Offset(0, 0), // changes position of shadow
+              offset: const Offset(0, 0), // changes position of shadow
             ),
           ],
         ),
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(

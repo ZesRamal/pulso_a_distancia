@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/providers/heart_rate_provider.dart';
 import 'package:provider/provider.dart';
 
+/// El widget [HistoryChart] muestra un gráfico de líneas que representa el historial de ritmo cardíaco.
 class HistoryChart extends StatefulWidget {
   const HistoryChart({super.key});
 
@@ -12,8 +13,8 @@ class HistoryChart extends StatefulWidget {
 
 class _HistoryChartState extends State<HistoryChart> {
   List<Color> gradientColors = [
-    Color(0xffFF7979),
-    Color(0xffFF7979),
+    const Color(0xffFF7979),
+    const Color(0xffFF7979),
   ];
 
   bool showAvg = false;
@@ -21,7 +22,7 @@ class _HistoryChartState extends State<HistoryChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 28),
+      margin: const EdgeInsets.only(bottom: 28),
       child: Stack(
         children: <Widget>[
           AspectRatio(
@@ -38,7 +39,7 @@ class _HistoryChartState extends State<HistoryChart> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 60,
             height: 40,
             child: Text(
@@ -107,6 +108,7 @@ class _HistoryChartState extends State<HistoryChart> {
     return Text(text, style: style, textAlign: TextAlign.left);
   }
 
+  /// Crea los datos principales para el gráfico.
   LineChartData mainData() {
     return LineChartData(
       gridData: FlGridData(
@@ -154,8 +156,8 @@ class _HistoryChartState extends State<HistoryChart> {
       ),
       borderData: FlBorderData(
         show: true,
-        border: Border(
-            bottom: BorderSide(color: const Color(0xff0096D1), width: 1)),
+        border: const Border(
+            bottom: BorderSide(color: Color(0xff0096D1), width: 1)),
       ),
       minX: 0,
       maxX: 30,

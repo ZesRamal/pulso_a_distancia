@@ -4,6 +4,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/list_section.dart';
 
+/// [DeviceStatusScreen] es una pantalla que muestra el estado de la conexión Bluetooth con un dispositivo específico.
+/// Esta pantalla se encarga de solicitar permisos, escanear dispositivos y conectar o desconectar dispositivos Bluetooth.
 class DeviceStatusScreen extends StatefulWidget {
   const DeviceStatusScreen({Key? key}) : super(key: key);
 
@@ -22,6 +24,8 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
     _requestPermissions();
   }
 
+  /// Solicita los permisos necesarios para usar Bluetooth y la ubicación.
+  /// Si los permisos son otorgados, comienza a escanear dispositivos.
   void _requestPermissions() async {
     var statuses = await [
       Permission.bluetooth,
@@ -41,6 +45,8 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
     }
   }
 
+  /// Escanea dispositivos Bluetooth cercanos.
+  /// Si encuentra un dispositivo con nombre 'ESP32S', se detiene el escaneo y se intenta conectar a él.
   void _scanForDevices() {
     setState(() {
       _status = "Scanning for devices...";
@@ -54,6 +60,8 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
     });
   }
 
+  /// Intenta conectar con un dispositivo Bluetooth.
+  /// Actualiza el estado de la conexión y maneja posibles errores.
   void _connectToDevice(BluetoothDevice device) async {
     setState(() {
       _status = "Connecting to device...";
@@ -76,6 +84,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
     }
   }
 
+  /// Desconecta el dispositivo Bluetooth.
   void _disconnectDevice() {
     _connection?.close();
     setState(() {
@@ -94,7 +103,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
             padding: EdgeInsets.symmetric(
               vertical: MediaQuery.of(context).size.height * 0.03,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xffFFF4EA),
             ),
             child: Column(
@@ -102,7 +111,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
               children: [
                 Column(
                   children: [
-                    HeartWithIcon(
+                    const HeartWithIcon(
                       iconName: Icons.bluetooth,
                       showIcon: true,
                     ),
@@ -118,13 +127,13 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                               children: [
                                 Icon(
                                   Icons.favorite_border_outlined,
-                                  color: Color(0xff0096D1),
+                                  color: const Color(0xff0096D1),
                                   size: MediaQuery.of(context).size.width * 0.2,
                                 ),
                                 Text(
                                   _connection != null ? "Connected" : "Disconnected",
                                   style: TextStyle(
-                                    color: Color(0xff0096D1),
+                                    color: const Color(0xff0096D1),
                                     fontSize: MediaQuery.of(context).size.width * 0.08,
                                   ),
                                 ),
@@ -132,7 +141,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     _status,
-                                    style: TextStyle(fontSize: 16, color: Colors.black),
+                                    style: const TextStyle(fontSize: 16, color: Colors.black),
                                   ),
                                 ),
                               ],
@@ -146,7 +155,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                 TextButton(
                   onPressed: _connection != null ? _disconnectDevice : _scanForDevices,
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xffFDA5A0)),
+                    backgroundColor: MaterialStateProperty.all(const Color(0xffFDA5A0)),
                     fixedSize: MaterialStateProperty.all(Size(
                       MediaQuery.of(context).size.width * 0.7,
                       MediaQuery.of(context).size.height * 0.07,
@@ -154,7 +163,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Color.fromARGB(255, 255, 113, 105),
                           width: 3,
                         ),
@@ -164,7 +173,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                   child: Text(
                     _connection != null ? "Disconnect Device" : "Connect Device",
                     style: TextStyle(
-                      color: Color(0xffFFF4EA),
+                      color: const Color(0xffFFF4EA),
                       fontSize: MediaQuery.of(context).size.width * 0.06,
                       fontWeight: FontWeight.w100,
                     ),
@@ -180,13 +189,13 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(const CircleBorder()),
+              ),
               child: Icon(
                 Icons.arrow_back,
-                color: Color(0xff0096D1),
+                color: const Color(0xff0096D1),
                 size: MediaQuery.of(context).size.width * 0.14,
-              ),
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all(CircleBorder()),
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+/// El widget [LineChartSample2] muestra un gráfico de línea con datos de muestra.
 class LineChartSample2 extends StatefulWidget {
   const LineChartSample2({super.key});
 
@@ -10,8 +11,8 @@ class LineChartSample2 extends StatefulWidget {
 
 class _LineChartSample2State extends State<LineChartSample2> {
   List<Color> gradientColors = [
-    Color(0xffFF7979),
-    Color(0xffFF7979),
+    const Color(0xffFF7979),
+    const Color(0xffFF7979),
   ];
 
   bool showAvg = false;
@@ -19,7 +20,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 28),
+      margin: const EdgeInsets.only(bottom: 28),
       child: Stack(
         children: <Widget>[
           AspectRatio(
@@ -36,7 +37,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 60,
             height: 40,
             child: Text(
@@ -53,6 +54,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     );
   }
 
+  /// Construye el widget [SideTitleWidget] para los títulos en el eje X.
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
         fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xff0096D1));
@@ -78,6 +80,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     );
   }
 
+  /// Construye el widget [Text] para los títulos en el eje Y.
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
         fontWeight: FontWeight.bold, fontSize: 15, color: Color(0xff0096D1));
@@ -99,6 +102,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return Text(text, style: style, textAlign: TextAlign.left);
   }
 
+  /// Construye los datos principales del gráfico de línea.
   LineChartData mainData() {
     return LineChartData(
       gridData: FlGridData(
@@ -146,8 +150,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
       ),
       borderData: FlBorderData(
         show: true,
-        border: Border(
-            bottom: BorderSide(color: const Color(0xff0096D1), width: 1)),
+        border: const Border(
+            bottom: BorderSide(color: Color(0xff0096D1), width: 1)),
       ),
       minX: 0,
       maxX: 10,

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/src/screens/history_screen.dart';
 import 'package:heart_at_time/src/screens/mystate_screen.dart';
 
+/// La página [DistanceUserPage] muestra información detallada sobre un usuario, como su estado actual y su historial.
 class DistanceUserPage extends StatefulWidget {
   const DistanceUserPage({super.key});
 
@@ -14,25 +15,25 @@ class _DistanceUserPageState extends State<DistanceUserPage> {
   int _currentIndex = 0;
 
   List<Widget> screens = [
-    MyStateScreen(),
-    HistoryScreen(),
+    const MyStateScreen(),
+    const HistoryScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff3EBDC6),
+        backgroundColor: const Color(0xff3EBDC6),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "John Smith",
           style: TextStyle(color: Color(0xffFFF4EA)),
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Color(0xffFFF4EA), //change your color here
         ),
       ),
-      backgroundColor: Color(0xffFFF4EA),
+      backgroundColor: const Color(0xffFFF4EA),
       body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -41,15 +42,15 @@ class _DistanceUserPageState extends State<DistanceUserPage> {
             _currentIndex = index;
           })
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_border), label: "Estado"),
           BottomNavigationBarItem(
               icon: Icon(Icons.history_toggle_off_sharp), label: "Historial"),
         ],
-        backgroundColor: Color(0xff3EBDC6),
-        selectedItemColor: Color(0xffFFF4EA),
-        unselectedItemColor: Color(0xffFFF4EA),
+        backgroundColor: const Color(0xff3EBDC6),
+        selectedItemColor: const Color(0xffFFF4EA),
+        unselectedItemColor: const Color(0xffFFF4EA),
         selectedLabelStyle: GoogleFonts.oxygen(),
         unselectedLabelStyle: GoogleFonts.oxygen(),
         type: BottomNavigationBarType.fixed,

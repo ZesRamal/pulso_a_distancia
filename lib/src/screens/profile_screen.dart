@@ -8,6 +8,8 @@ import 'package:heart_at_time/src/widgets/bar_button.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 
+/// [ProfileScreen] es una pantalla que muestra la información del perfil del usuario
+/// y proporciona varias opciones de navegación a través de la aplicación.
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -24,13 +26,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Container(
             padding: EdgeInsets.symmetric(
                 vertical: MediaQuery.of(context).size.height * 0.04),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xffFFF4EA),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                HeartWithIcon(
+                const HeartWithIcon(
                   iconName: Icons.person,
                   showIcon: true,
                 ),
@@ -40,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.width * 0.07),
                 ),
-                Text("Id Usuario: 00000000"),
+                const Text("Id Usuario: 00000000"),
                 Padding(
                   padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.width * 0.04),
@@ -57,7 +59,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.04)),
                       ),
-                      BarButtonSection(
+                      // Sección de botones para opciones del perfil.
+                      const BarButtonSection(
                         children: [
                           OptionBarButton(
                             text: "Editar Perfil",
@@ -80,7 +83,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.04)),
                     ),
-                    BarButtonSection(
+                    // Sección de botones para opciones de monitoreo.
+                    const BarButtonSection(
                       children: [
                         OptionBarButton(
                           text: "Lista de Cuidadores",
@@ -110,7 +114,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.04)),
                     ),
-                    BarButtonSection(
+                    // Sección de botones para opciones del dispositivo.
+                    const BarButtonSection(
                       children: [
                         OptionBarButton(
                           text: "Estado de la banda",
@@ -120,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ],
                 ),
-                LogOutButton()
+                const LogOutButton()
               ],
             ),
           ),
@@ -130,6 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
+/// [LogOutButton] es un botón personalizado para cerrar sesión.
 class LogOutButton extends StatelessWidget {
   const LogOutButton({
     super.key,
@@ -140,19 +146,19 @@ class LogOutButton extends StatelessWidget {
     return TextButton(
         onPressed: () {},
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(Color(0xffFDA5A0)),
+            backgroundColor: const MaterialStatePropertyAll(Color(0xffFDA5A0)),
             fixedSize: MaterialStatePropertyAll(Size(
                 MediaQuery.of(context).size.width * 0.7,
                 MediaQuery.of(context).size.height * 0.07)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(
+                    side: const BorderSide(
                         color: Color.fromARGB(255, 255, 113, 105), width: 3)))),
         child: Text(
           "Cerrar Sesión",
           style: TextStyle(
-              color: Color(0xffFFF4EA),
+              color: const Color(0xffFFF4EA),
               fontSize: MediaQuery.of(context).size.width * 0.06,
               fontWeight: FontWeight.w100),
         ));

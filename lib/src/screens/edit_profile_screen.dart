@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 
+/// [ProfileEditScreen] es una pantalla que permite al usuario editar su perfil.
+/// Esta pantalla tiene un diseño limpio y facilita la edición del nombre del usuario.
 class ProfileEditScreen extends StatefulWidget {
   const ProfileEditScreen({super.key});
 
@@ -14,6 +16,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Ocultar el teclado cuando se toca fuera de un campo de texto
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
@@ -27,17 +30,18 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                 height: MediaQuery.of(context).size.height,
                 padding: EdgeInsets.symmetric(
                     vertical: MediaQuery.of(context).size.height * 0.04),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xffFFF4EA),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Encabezado y formulario de edición
                     Column(
                       children: [
                         Column(
                           children: [
-                            HeartWithIcon(
+                            const HeartWithIcon(
                               iconName: Icons.settings,
                               showIcon: true,
                             ),
@@ -50,6 +54,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             ),
                           ],
                         ),
+                        // Sección de edición del nombre
                         Padding(
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.width * 0.04),
@@ -73,9 +78,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   TextField(
                                     decoration: InputDecoration(
                                         hintText: "John Smith",
-                                        enabledBorder: UnderlineInputBorder(
+                                        enabledBorder: const UnderlineInputBorder(
                                             borderSide: BorderSide.none),
-                                        focusedBorder: UnderlineInputBorder(
+                                        focusedBorder: const UnderlineInputBorder(
                                             borderSide: BorderSide.none),
                                         isDense: true,
                                         contentPadding: EdgeInsets.symmetric(
@@ -92,13 +97,14 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                       ],
                     ),
+                    // Botón para guardar cambios
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Color(0xff0096D1)),
+                                const MaterialStatePropertyAll(Color(0xff0096D1)),
                             fixedSize: MaterialStatePropertyAll(Size(
                                 MediaQuery.of(context).size.width * 0.7,
                                 MediaQuery.of(context).size.height * 0.07)),
@@ -109,7 +115,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         child: Text(
                           "Guardar Cambio",
                           style: TextStyle(
-                              color: Color(0xffFFF4EA),
+                              color: const Color(0xffFFF4EA),
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.06,
                               fontWeight: FontWeight.w100),
@@ -118,6 +124,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                 ),
               ),
             ),
+            // Botón de retroceso
             Positioned(
                 left: MediaQuery.of(context).size.width * 0.02,
                 top: MediaQuery.of(context).size.width * 0.07,
@@ -125,13 +132,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  style: const ButtonStyle(
+                      shape: MaterialStatePropertyAll(CircleBorder())),
                   child: Icon(
                     Icons.arrow_back,
-                    color: Color(0xff0096D1),
+                    color: const Color(0xff0096D1),
                     size: MediaQuery.of(context).size.width * 0.14,
                   ),
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(CircleBorder())),
                 ))
           ],
         ),

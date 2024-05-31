@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// El widget [LogInWith] muestra opciones para iniciar sesión con diferentes plataformas.
 class LogInWith extends StatelessWidget {
   const LogInWith({
     super.key,
@@ -16,7 +17,7 @@ class LogInWith extends StatelessWidget {
             "O inicia sesión con",
             style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.04,
-                color: Color(0xff0096D1)),
+                color: const Color(0xff0096D1)),
           ),
         ),
         Container(
@@ -30,10 +31,10 @@ class LogInWith extends StatelessWidget {
                 icon: Icon(
                   Icons.g_mobiledata,
                   size: MediaQuery.of(context).size.width * 0.15,
-                  color: Color(0xff0096D1),
+                  color: const Color(0xff0096D1),
                 ),
                 padding: EdgeInsets.zero,
-                style: ButtonStyle(
+                style: const ButtonStyle(
                     side: MaterialStatePropertyAll(
                         BorderSide(color: Color(0xff0096D1), width: 1))),
               ),
@@ -42,10 +43,10 @@ class LogInWith extends StatelessWidget {
                 icon: Icon(
                   Icons.facebook,
                   size: MediaQuery.of(context).size.width * 0.15,
-                  color: Color(0xff0096D1),
+                  color: const Color(0xff0096D1),
                 ),
                 padding: EdgeInsets.zero,
-                style: ButtonStyle(
+                style: const ButtonStyle(
                     side: MaterialStatePropertyAll(
                         BorderSide(color: Color(0xff0096D1), width: 1))),
               ),
@@ -54,10 +55,10 @@ class LogInWith extends StatelessWidget {
                 icon: Icon(
                   Icons.apple,
                   size: MediaQuery.of(context).size.width * 0.15,
-                  color: Color(0xff0096D1),
+                  color: const Color(0xff0096D1),
                 ),
                 padding: EdgeInsets.zero,
-                style: ButtonStyle(
+                style: const ButtonStyle(
                     side: MaterialStatePropertyAll(
                         BorderSide(color: Color(0xff0096D1), width: 1))),
               )

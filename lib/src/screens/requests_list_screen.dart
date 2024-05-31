@@ -4,6 +4,7 @@ import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/patient_request_list_item.dart';
 import 'package:heart_at_time/src/widgets/request_list_item.dart';
 
+/// [RequestListScreen] es una pantalla que muestra la lista de solicitudes de cuidadores y pacientes.
 class RequestListScreen extends StatelessWidget {
   const RequestListScreen({super.key});
 
@@ -16,7 +17,7 @@ class RequestListScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.symmetric(
                 vertical: MediaQuery.of(context).size.height * 0.04),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xffFFF4EA),
             ),
             child: Column(
@@ -26,7 +27,7 @@ class RequestListScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        HeartWithIcon(
+                        const HeartWithIcon(
                           iconName: Icons.person_add,
                           showIcon: true,
                         ),
@@ -56,7 +57,8 @@ class RequestListScreen extends StatelessWidget {
                                   fontSize: MediaQuery.of(context).size.width *
                                       0.04)),
                         ),
-                        BarButtonSection(
+                        // Sección de botones para las solicitudes de cuidadores.
+                        const BarButtonSection(
                           children: [RequestListItem()],
                         ),
                       ],
@@ -74,7 +76,8 @@ class RequestListScreen extends StatelessWidget {
                                   fontSize: MediaQuery.of(context).size.width *
                                       0.04)),
                         ),
-                        BarButtonSection(
+                        // Sección de botones para las solicitudes de pacientes.
+                        const BarButtonSection(
                           children: [PatientRequestListItem()],
                         ),
                       ],
@@ -91,13 +94,13 @@ class RequestListScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
+                style: const ButtonStyle(
+                    shape: MaterialStatePropertyAll(CircleBorder())),
                 child: Icon(
                   Icons.arrow_back,
-                  color: Color(0xff0096D1),
+                  color: const Color(0xff0096D1),
                   size: MediaQuery.of(context).size.width * 0.14,
                 ),
-                style: ButtonStyle(
-                    shape: MaterialStatePropertyAll(CircleBorder())),
               ))
         ],
       ),

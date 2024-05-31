@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// El widget [OptionBarButton] representa un botón de opción que al hacer clic navega a una pantalla específica.
 class OptionBarButton extends StatelessWidget {
+  // Texto que se muestra en el botón.
   final String text;
+  // Widget al que se navegará al hacer clic en el botón.
   final Widget pushTo;
   const OptionBarButton({
     super.key,
@@ -30,9 +33,9 @@ class OptionBarButton extends StatelessWidget {
         children: [
           Text(
             text,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
-          Text(
+          const Text(
             ">",
             style: TextStyle(color: Colors.black),
           )
