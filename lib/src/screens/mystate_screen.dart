@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:heart_at_time/src/providers/heart_rate_provider.dart';
-import 'package:heart_at_time/src/screens/features/models/user_model.dart';
+import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/graph.dart';
 import 'package:heart_at_time/src/widgets/heartRateMeter.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 class MyStateScreen extends StatefulWidget {
   const MyStateScreen({super.key});
@@ -16,14 +15,59 @@ class MyStateScreen extends StatefulWidget {
 
 class _MyStateScreenState extends State<MyStateScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  BluetoothConnection? connection;
+  int _bpm = 0;
+  bool isConnecting = true;
 
-  Future<Usuario?> _fetchUsuario(String userId) async {
-    DocumentSnapshot docSnapshot =
-        await _firestore.collection('usuarios').doc(userId).get();
-    if (docSnapshot.exists) {
-      return Usuario.fromFirestore(docSnapshot);
+  @override
+  void initState() {
+    super.initState();
+    connectToDevice();
+  }
+
+  @override
+  void dispose() {
+    connection?.dispose();
+    super.dispose();
+  }
+
+  void connectToDevice() async {
+    try {
+      BluetoothConnection newConnection = await BluetoothConnection.toAddress('08:B6:1F:34:DD:BE'); // Replace with your device address
+      setState(() {
+        connection = newConnection;
+        isConnecting = false;
+      });
+      newConnection.input!.listen((data) {
+        String dataString = String.fromCharCodes(data).trim();
+        if (dataString.startsWith("BPM:")) {
+          int bpm = int.parse(dataString.split(":")[1].trim());
+          setState(() {
+            _bpm = bpm;
+          });
+          _saveDataToFirebase(bpm);
+        }
+      }).onDone(() {
+        setState(() {
+          isConnecting = true;
+        });
+      });
+    } catch (e) {
+      print('Error connecting to device: $e');
     }
-    return null;
+  }
+
+  Future<void> _saveDataToFirebase(int bpm) async {
+    try {
+      await _firestore.collection('usuarios').doc('7hCw9Yjrdv0Rbw1yF2zs').update({
+        'historialBPM': FieldValue.arrayUnion([{
+          'bpm': bpm,
+          'timestamp': Timestamp.now(),
+        }])
+      });
+    } catch (e) {
+      print('Error saving data to Firebase: $e');
+    }
   }
 
   @override
@@ -40,49 +84,21 @@ class _MyStateScreenState extends State<MyStateScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                FutureBuilder<Usuario?>(
-                  future: _fetchUsuario(
-                      '7hCw9Yjrdv0Rbw1yF2zs'), // Aquí puedes pasar el ID de usuario deseado
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
-                    }
-                    if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    }
-                    if (!snapshot.hasData || snapshot.data == null) {
-                      return Text('No data available');
-                    }
-
-                    Usuario usuario = snapshot.data!;
-                    var latestRecord = usuario.historialBPM.last;
-                    int bpm = latestRecord['bpm'];
-                    var history = usuario.historialBPM.getRange(
-                        usuario.historialBPM.length - 30,
-                        usuario.historialBPM.length);
-                    List last10 = history
-                        .where((map) => map.containsKey('bpm'))
-                        .map((map) => map['bpm'])
-                        .toList();
-                    List last10Times = history
-                        .where((map) => map.containsKey('timestamp'))
-                        .map((map) => map['timestamp'])
-                        .toList();
-                    context.read<HeartRateProvider>().setHeartRate(bpm);
-                    context.read<HeartRateProvider>().addToHistory(last10);
-                    context
-                        .read<HeartRateProvider>()
-                        .addToHistoryTimes(last10Times);
-                    return HeartRateMeter(
-                      bpm: bpm,
-                    );
-                  },
+                HeartRateMeter(
+                  bpm: _bpm,
                 ),
                 HeartLine(),
                 InfoCard(
                   title: "Resumen",
-                  info:
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis leo aliquam convallis mollis. Phasellus tempor, neque sed viverra cursus, nulla nisl sodales ante, eu eleifend ex massa vel nulla. Sed iaculis enim quam, eu lacinia massa aliquet vel. Ut eget euismod enim. Cras et purus quam. In bibendum tortor eu risus pretium, a gravida mi pellentesque. Etiam consectetur ac erat nec posuere. Nunc dictum quam vel eros facilisis, ut finibus felis accumsan. Phasellus ultricies sodales ipsum vitae molestie.",
+                  info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                      "Duis lobortis leo aliquam convallis mollis. Phasellus tempor, "
+                      "neque sed viverra cursus, nulla nisl sodales ante, eu eleifend "
+                      "ex massa vel nulla. Sed iaculis enim quam, eu lacinia massa "
+                      "aliquet vel. Ut eget euismod enim. Cras et purus quam. In "
+                      "bibendum tortor eu risus pretium, a gravida mi pellentesque. "
+                      "Etiam consectetur ac erat nec posuere. Nunc dictum quam vel eros "
+                      "facilisis, ut finibus felis accumsan. Phasellus ultricies sodales "
+                      "ipsum vitae molestie.",
                 ),
               ],
             ),
