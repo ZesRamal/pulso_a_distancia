@@ -18,7 +18,7 @@ Software:
 * Driver 2.0.16 by Espressif Systems (Necesario para trabajar con ESP32)
 
 Hardware:
-* ESP-WROOM-32 ESP32 ESP-32S como modulo de desarollo para la parte del sensor
+* ESP-WROOM-32 ESP32 ESP-32S 
 * Sensor de pulso fotoeléctrico
   
 ### ¿Como Instalar y Correr el Proyecto?
