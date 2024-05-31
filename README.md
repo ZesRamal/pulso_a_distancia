@@ -22,6 +22,30 @@ Hardware:
 * Sensor de pulso fotoeléctrico
   
 ### ¿Como Instalar y Correr el Proyecto?
+
+# Project Title
+
+A brief description of what this project does and who it's for
+
+
+## Installation
+
+Necesitas tener instalado el SDK Flutter para ello te puedes apoyar en el siguiente enlace: [Flutter 🔎](https://docs.flutter.dev/get-started/install)
+
+Clona el repositorio y accede a la rama más estable con estos comandos:
+
+```bash
+git clone https://github.com/ZesRamal/pulso_a_distancia.git
+cd pulso_a_distancia
+git checkout front
+```
+Para ejecutarla se abre una terminal en la ubicación del proyecto y se escribe el comando:
+```bash
+flutter run
+```
+NOTA: Dentro del entorno que estés programando, asegurate de contar con un dispositivo emulado o físico conectado para poder ejecutar la aplicación. 
+
+
 Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el código de arduino
 
 ### ¿Como usar el proyecto?
