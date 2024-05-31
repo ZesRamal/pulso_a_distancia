@@ -25,6 +25,7 @@ Hardware:
 Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el código de arduino
 
 ### ¿Como usar el proyecto?
+En cualquier parte del cuerpo que cuente con un vaso sanguíneo apoyar el sensor donde capturará los datos del pulso y serán enviados vía bluetooth al dispositivo móvil
 ### Creditos
 
 * Project Manager: [Oscar Anguiano Gonzalez](https://github.com/Oscar060502)
