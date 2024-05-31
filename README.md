@@ -38,7 +38,7 @@ flutter run
 
 NOTA: Dentro del entorno que estés programando, asegurate de contar con un dispositivo emulado o físico conectado para poder ejecutar la aplicación.
 
-Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el [código de arduino](https://github.com/ZesRamal/pulso_a_distancia/blob/sensor/Sensor.ino), para ello puedes descargar el IDE en [Arduino 🔎](https://www.arduino.cc/en/software)
+Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el [código de arduino](https://github.com/ZesRamal/pulso_a_distancia/blob/main/CodigoArduino/Sensor.ino), para ello puedes descargar el IDE en [Arduino 🔎](https://www.arduino.cc/en/software)
 
 NOTA: Recuerda elegir el sistema operativo en el que estés trabajando.
 
