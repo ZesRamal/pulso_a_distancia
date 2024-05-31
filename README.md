@@ -21,15 +21,16 @@ Hardware:
 * ESP-WROOM-32 ESP32 ESP-32S como modulo de desarollo para la parte del sensor
 * Sensor de pulso fotoeléctrico
   
-### Tabla de Contenido (Opcional)
 ### ¿Como Instalar y Correr el Proyecto?
+
+
 ### ¿Como usar el proyecto?
 ### Creditos
 
-* Project Manager: Oscar Anguiano Gonzalez
-* Frontend Dev: Cesar Francisco Ramos Leal
-* Backend Dev: Jared Zaragoza Rosales
-* Database Admin: Ricardo Escobar Ceseña
+* Project Manager: [Oscar Anguiano Gonzalez](https://github.com/Oscar060502)
+* Frontend Dev: [Cesar Francisco Ramos Leal](https://github.com/ZesRamal)
+* Backend Dev: [Jared Zaragoza Rosales](https://github.com/K0i0s)
+* Database Admin: [Ricardo Escobar Ceseña](https://github.com/XPFLASH)
 
 ### Licencias
 
