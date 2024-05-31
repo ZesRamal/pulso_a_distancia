@@ -1,10 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:heart_at_time/src/providers/heart_rate_provider.dart';
+import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/home_page.dart';
-import 'package:heart_at_time/src/screens/welcome_screen.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(ChangeNotifierProvider(
+      create: (_) => HeartRateProvider(), child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -17,11 +25,11 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           textSelectionTheme: TextSelectionThemeData(
-              cursorColor: Color(0xff0096D1),
+              cursorColor: const Color(0xff0096D1),
               selectionColor: Colors.blueGrey[50],
-              selectionHandleColor: Color(0xff0096D1)),
+              selectionHandleColor: const Color(0xff0096D1)),
           textTheme: GoogleFonts.oxygenTextTheme(Theme.of(context).textTheme)),
-      home: WelcomeScreen(),
+      home: const HomePage(),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:heart_at_time/src/widgets/iconTitle.dart';
 import 'package:heart_at_time/src/widgets/longButton.dart';
 import 'package:heart_at_time/src/widgets/textWithButton.dart';
 
+/// [WelcomeScreen] es la pantalla de bienvenida de la aplicación.
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 

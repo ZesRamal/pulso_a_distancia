@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+/// El widget [HeartLine] muestra un gráfico de línea.
 class HeartLine extends StatefulWidget {
   const HeartLine({super.key});
 
