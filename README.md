@@ -58,13 +58,13 @@ Activo y en desarrollo.
 
 ## Pantallas de la Aplicación
 
+- *Pantalla de Estado del Usuario.* Aquí se visualiza el último dato de pulsasiones por minuto medido por el sensor.
+
 <img src="READMEAppScreenshots/MainScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
 
-*Pantalla de Estado del Usuario.* Aquí se visualiza el último dato de pulsasiones por minuto medido por el sensor.
+- *Pantalla de Lista de Usuarios Monitoreados.* Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
 
 <img src="READMEAppScreenshots/DistanceListScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
-
-*Pantalla de Lista de Usuarios Monitoreados.* Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
 
 ## Créditos
 
