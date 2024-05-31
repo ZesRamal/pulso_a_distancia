@@ -62,7 +62,7 @@ Activo y en desarrollo.
 
 <img src="READMEAppScreenshots/MainScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
 
-- <b>*Pantalla de Lista de Usuarios Monitoreados.*</b> Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
+- <b>*Pantalla de Lista de Usuarios Monitoreados.*<b> Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
 
 <img src="READMEAppScreenshots/DistanceListScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
 
