@@ -26,6 +26,6 @@ Hardware:
 ### Creditos
 ### Licencias
 
-[Licencia](LICENSE)
+[Licencia MIT](LICENSE)
 
 
