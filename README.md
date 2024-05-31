@@ -45,6 +45,17 @@ NOTA: Recuerda elegir el sistema operativo en el que estés trabajando.
 
 En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos dirigimos a la sección del perfil del usuario y nos aseguramos de que se establezca conexión a la app, con todo conectado, apoyar el sensor en cualquier parte del cuerpo que cuente con un vaso sanguíneo para empezaran a visualizar los datos del pulso en la pantalla principal de la aplicación.
 
+## Estado y Roadmap
+
+#### Estado:
+Activo y en desarrollo.
+
+#### Roadmap:
+- Implementar cuentas de usuario.
+- Implementar sistema de solicitudes de seguimiento.
+- Aplicar analisis de datos para predicción de anomalías en el pulso.
+- Añadir detección de actividad física con giroscopio.
+
 ## Créditos
 
 * Project Manager: [Oscar Anguiano Gonzalez](https://github.com/Oscar060502)
