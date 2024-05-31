@@ -22,12 +22,10 @@ Hardware:
 
 Necesitas tener instalado el SDK Flutter, para ello te puedes apoyar en el siguiente enlace: [Flutter 🔎](https://docs.flutter.dev/get-started/install)
 
-Clona el repositorio y accede a la rama más estable con estos comandos:
+Para clonar el proyecto abre una terminal en la ubicación deseada y escribe el comando (Debes de tener git instalado para realizar esta acción):
 
 ```bash
 git clone https://github.com/ZesRamal/pulso_a_distancia.git
-cd pulso_a_distancia
-git checkout front
 ```
 Para ejecutarla se abre una terminal en la ubicación del proyecto y se escribe el comando:
 ```bash
