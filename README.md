@@ -38,13 +38,14 @@ NOTA: Dentro del entorno que estés programando, asegurate de contar con un disp
 
 Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el [código de arduino](https://github.com/ZesRamal/pulso_a_distancia/blob/sensor/Sensor.ino), para ello puedes descargar el IDE en [Arduino 🔎](https://www.arduino.cc/en/software)
 
-NOTA: Recuerda elegir el sistema operativo que en el que estés trabajando
+NOTA: Recuerda elegir el sistema operativo en el que estés trabajando.
 
 
 ## ¿Cómo usar el proyecto?
-En cualquier parte del cuerpo que cuente con un vaso sanguíneo apoyar el sensor donde capturará los datos del pulso y serán enviados vía bluetooth al dispositivo móvil.
 
 En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos dirigimos a la sección del perfil del usuario y nos aseguramos de que se establezca conexión a la app, con todo conectado, los datos leídos a través del sensor se empezaran a visualizar en la pantalla principal del móvil del paciente y el móvil del médico y/o familiar a cargo.
+
+Apoyar el sensor en cualquier parte del cuerpo que cuente con un vaso sanguíneo para capturar los datos del pulso y aspi enviarlos vía bluetooth al dispositivo móvil.
 
 ## Créditos
 
