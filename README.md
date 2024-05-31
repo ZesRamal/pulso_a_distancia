@@ -43,9 +43,7 @@ NOTA: Recuerda elegir el sistema operativo en el que estés trabajando.
 
 ## ¿Cómo usar el proyecto?
 
-En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos dirigimos a la sección del perfil del usuario y nos aseguramos de que se establezca conexión a la app, con todo conectado, los datos leídos a través del sensor se empezaran a visualizar en la pantalla principal del móvil del paciente y el móvil del médico y/o familiar a cargo.
-
-Apoyar el sensor en cualquier parte del cuerpo que cuente con un vaso sanguíneo para capturar los datos del pulso y aspi enviarlos vía bluetooth al dispositivo móvil.
+En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos dirigimos a la sección del perfil del usuario y nos aseguramos de que se establezca conexión a la app, con todo conectado, apoyar el sensor en cualquier parte del cuerpo que cuente con un vaso sanguíneo para empezaran a visualizar los datos del pulso en la pantalla principal de la aplicación.
 
 ## Créditos
 
