@@ -53,7 +53,8 @@ Activo y en desarrollo.
 #### Roadmap:
 - Implementar cuentas de usuario.
 - Implementar sistema de solicitudes de seguimiento.
-- Aplicar analisis de datos para predicción de anomalías en el pulso.
+- Implementar consulta de rangos de tiempo en historial.
+- Aplicar analisis de datos del historial para predicción de anomalías en el pulso.
 - Añadir detección de actividad física con giroscopio.
 
 ## Pantallas de la Aplicación
@@ -62,9 +63,45 @@ Activo y en desarrollo.
 
 <img src="READMEAppScreenshots/MainScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
 
-- <b>*Pantalla de Lista de Usuarios Monitoreados.*<b> Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
+- *Pantalla de Lista de Usuarios Monitoreados.* Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede dar clic al inidividuo para acceder a su información.
 
 <img src="READMEAppScreenshots/DistanceListScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Historial de Pulso.* Aquí se visualiza la gráfica que muestra los cambios en los valores de PPM según el tiempo.
+
+<img src="READMEAppScreenshots/HistoryScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Estado del Usuario Remoto.* Aquí se visualiza el último dato de pulsasiones por minuto medido por el sensor que utiliza el usuario a distancia.
+
+<img src="READMEAppScreenshots/MonitoringMainScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Historial de Pulso del Usuario Remoto* Aquí se visualiza la gráfica que muestra los cambios en los valores de PPM según el tiempo del usuario a distancia.
+
+<img src="READMEAppScreenshots/MonitoringHistoryScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Perfil de Usuario.* Aquí se visualiza la información básica del perfil junto con opciones adicionales para el uso de la aplicación.
+
+<img src="READMEAppScreenshots/ProfileScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Edición de Perfil.* Aquí se visualiza el apartado donde se permitirá en un futuro modificar información de nuestro perfil.
+
+<img src="READMEAppScreenshots/EditProfileScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Lista de Cuidadores del Perfil* Aquí se visualiza la lista de usuarios que nos están monitoreando, se puede eliminar a alguien desde esta pantalla.
+
+<img src="READMEAppScreenshots/CaretakersScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Lista de Usuarios Monitoreados del Perfil.* Aquí se visualiza la lista de usuarios que estamos monitoreando, se puede eliminar a alguien desde esta pantalla.
+
+<img src="READMEAppScreenshots/PatientsScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Lista de Solitudes de Monitoreo* Aquí se visualiza la lista de solicitudes enviadas o recibidas para monitoreo. Se pueden aceptar, rechazar o cancelar.
+
+<img src="READMEAppScreenshots/RequestScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
+
+- *Pantalla de Estado de Conexión de la Banda* Aquí se visualiza si existe o no comunicación entre la banda y la aplicación. Se puede desconectar en caso necesario.
+
+<img src="READMEAppScreenshots/BandConnectionScreen.jpg" width="300" height="700" alt="Pantalla Principal de la Aplicación.">
 
 ## Créditos
 
