@@ -39,7 +39,10 @@ flutter run
 NOTA: Dentro del entorno que estés programando, asegurate de contar con un dispositivo emulado o físico conectado para poder ejecutar la aplicación. 
 
 
-Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el código de arduino
+Para la parte del hardware es necesario una placa de desarrollo ESP-WROOM-32 ESP32 ESP-32S y un sensor de pulso fotoeléctrico donde le cargaremos el código de arduino, para ello puedes descargar el IDE en [Arduino 🔎](https://www.arduino.cc/en/software)
+
+NOTA: Recuerda elegir el sistema operativo que en el que estés trabajando
+
 
 ## ¿Cómo usar el proyecto?
 En cualquier parte del cuerpo que cuente con un vaso sanguíneo apoyar el sensor donde capturará los datos del pulso y serán enviados vía bluetooth al dispositivo móvil.
@@ -56,5 +59,7 @@ En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos d
 ## Licencias
 
 [Licencia MIT](LICENSE)
+
+
 
 
