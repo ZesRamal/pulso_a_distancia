@@ -6,9 +6,9 @@ Permite a los usuarios monitorear datos cardiovasculares propios o de otras pers
 
 ¿Que tecnologia usa?
 Software:
-* dart: 3.3.4-4.0.0
-* flutter: 3.19.2^
-* Android SDK 21^
+* dart versión: 3.3.4-4.0.0
+* flutter versión: 3.19.2^
+* Android SDK versión: 21^
 
 Hardware:
 * ESP-WROOM-32 ESP32 ESP-32S como modoulo de desarollo para la parte del sensor
