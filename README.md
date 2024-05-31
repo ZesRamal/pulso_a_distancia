@@ -26,4 +26,6 @@ Hardware:
 ### Creditos
 ### Licencias
 
+[Licencia](LICENSE)
+
 
