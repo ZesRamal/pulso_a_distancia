@@ -3,6 +3,12 @@ import "package:flutter/material.dart";
 
 class HeartRateProvider with ChangeNotifier {
   int _heartRate = 0;
+  List<Map<String, dynamic>> _history = [];
+  List<Map<String, dynamic>> get history => _history;
+  void setHistory(history) {
+    _history = history;
+  }
+
   List<dynamic> _last10 = [
     0,
     0,
@@ -46,6 +52,12 @@ class HeartRateProvider with ChangeNotifier {
   ];
 
   int get heartRate => _heartRate;
+
+  String _username = "Oscar Anguiano";
+  String get username => _username;
+  void setUsername(String username) {
+    _username = username;
+  }
 
   void setHeartRate(int bpm) {
     _heartRate = bpm;

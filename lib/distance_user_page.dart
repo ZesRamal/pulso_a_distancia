@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heart_at_time/src/screens/history_screen.dart';
-import 'package:heart_at_time/src/screens/mystate_screen.dart';
+import 'package:heart_at_time/src/screens/patient_history_screen.dart';
+import 'package:heart_at_time/src/screens/patient_screen.dart';
 
 class DistanceUserPage extends StatefulWidget {
   const DistanceUserPage({super.key});
@@ -14,8 +15,8 @@ class _DistanceUserPageState extends State<DistanceUserPage> {
   int _currentIndex = 0;
 
   List<Widget> screens = [
-    MyStateScreen(),
-    HistoryScreen(),
+    PatientStateScreen(),
+    PatientHistoryScreen(),
   ];
 
   @override

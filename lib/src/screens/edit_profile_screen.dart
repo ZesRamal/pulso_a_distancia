@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:heart_at_time/home_page.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
+import 'package:heart_at_time/src/screens/profile_screen.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
+import 'package:provider/provider.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   const ProfileEditScreen({super.key});
@@ -10,6 +14,9 @@ class ProfileEditScreen extends StatefulWidget {
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
+  String name = "";
+  bool error = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -58,9 +65,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                        MediaQuery.of(context).size.width *
-                                            0.15),
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.15,
+                                ),
                                 child: Text("Nombre",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -70,23 +77,36 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               ),
                               BarButtonSection(
                                 children: [
-                                  TextField(
+                                  TextFormField(
                                     decoration: InputDecoration(
-                                        hintText: "Oscar Anguiano",
-                                        enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.05,
-                                            vertical: 8)),
+                                      hintText: "Nombre de usuario",
+                                      enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide.none),
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                          vertical: 8),
+                                    ),
+                                    onChanged: (value) => name = value,
                                   ),
                                 ],
                               ),
+                              Container(
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal:
+                                          MediaQuery.of(context).size.width *
+                                              0.11),
+                                  child: error
+                                      ? Text(
+                                          "Solo se permiten nombres de 2 o más caracteres.",
+                                          textAlign: TextAlign.center,
+                                        )
+                                      : Text(""))
                             ],
                           ),
                         ),
@@ -94,7 +114,14 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          if (name.length >= 2) {
+                            context.read<HeartRateProvider>().setUsername(name);
+                            setState(() {});
+                            Navigator.pop(context);
+                          } else {
+                            error = true;
+                            setState(() {});
+                          }
                         },
                         style: ButtonStyle(
                             backgroundColor:

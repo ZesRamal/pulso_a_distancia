@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ListItem extends StatelessWidget {
+class ListItem extends StatefulWidget {
   final String name;
   const ListItem({
     super.key,
@@ -8,12 +8,18 @@ class ListItem extends StatelessWidget {
   });
 
   @override
+  State<ListItem> createState() => _ListItemState();
+}
+
+class _ListItemState extends State<ListItem> {
+  @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       title: Text(
-        name,
+        widget.name,
         style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05),
       ),
+      shape: Border(),
       children: <Widget>[
         TextButton(
             onPressed: () {},
@@ -36,7 +42,6 @@ class ListItem extends StatelessWidget {
                   fontWeight: FontWeight.w100),
             )),
       ],
-      shape: Border(),
     );
   }
 }

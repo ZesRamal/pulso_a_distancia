@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BluetoothConnection? _connection;
-  bool _isConnected = false;
   bool isLoading = false;
   int _currentIndex = 0;
   String message = '';
@@ -36,7 +35,6 @@ class _HomePageState extends State<HomePage> {
         await BluetoothConnection.toAddress(device.address);
     setState(() {
       _connection = connection;
-      _isConnected = true;
       isLoading = false;
     });
   }
@@ -45,7 +43,6 @@ class _HomePageState extends State<HomePage> {
     await _connection!.finish();
     setState(() {
       _connection = null;
-      _isConnected = false;
     });
   }
 
@@ -55,8 +52,9 @@ class _HomePageState extends State<HomePage> {
         String dataStr = ascii.decode(data);
         message += dataStr;
         if (dataStr.contains('\n')) {
-          _processData(message.trim()); // Process and upload the complete message
-          message = '';   // Clear buffer to accept new string
+          _processData(
+              message.trim()); // Process and upload the complete message
+          message = ''; // Clear buffer to accept new string
         }
       });
       await _connection!.output.allSent;
@@ -83,7 +81,8 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _uploadData(Map<String, dynamic> data) async {
     String userId = "exampleUserId"; // Replace with actual user ID
-    CollectionReference users = FirebaseFirestore.instance.collection('usuarios');
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('usuarios');
 
     try {
       DocumentReference userDoc = users.doc(userId);

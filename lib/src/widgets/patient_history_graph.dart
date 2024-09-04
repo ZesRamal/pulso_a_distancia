@@ -1,22 +1,71 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:provider/provider.dart';
 
-class HistoryChart extends StatefulWidget {
-  const HistoryChart({super.key});
+class PatientHistoryChart extends StatefulWidget {
+  final int day;
+  const PatientHistoryChart({super.key, required this.day});
 
   @override
-  State<HistoryChart> createState() => _HistoryChartState();
+  State<PatientHistoryChart> createState() => _PatientHistoryChartState();
 }
 
-class _HistoryChartState extends State<HistoryChart> {
+class _PatientHistoryChartState extends State<PatientHistoryChart> {
   List<Color> gradientColors = [
     Color(0xffFF7979),
     Color(0xffFF7979),
   ];
 
+  Timer? timer;
+
+  void initTimer() {
+    if (timer != null && timer!.isActive) return;
+
+    timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      // dos :)
+      //job
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
   bool showAvg = false;
+
+  List<FlSpot> getSpots(int lastNDays) {
+    List<FlSpot> spotList = [];
+    double spotNum = 0;
+    final now = DateTime.now();
+    final lastWeek = now.subtract(Duration(days: lastNDays));
+    List<Map<String, dynamic>> history =
+        context.watch<HeartRateProvider>().history;
+    var result = history
+        .where((item) {
+          final timestamp = item['timestamp'] as Timestamp?;
+          if (timestamp == null) {
+            return false;
+          }
+          final timestampDateTime = timestamp.toDate();
+          return timestampDateTime.isAfter(lastWeek);
+        })
+        .map((item) => item['bpm'] as int)
+        .toList();
+    List<double> doubleResult =
+        result.map((int value) => value.toDouble()).toList();
+    for (var element in doubleResult) {
+      spotList.add(FlSpot(spotNum, element));
+      spotNum++;
+    }
+    return spotList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +83,7 @@ class _HistoryChartState extends State<HistoryChart> {
                 bottom: 12,
               ),
               child: LineChart(
-                mainData(),
+                mainData(widget.day),
               ),
             ),
           ),
@@ -107,7 +156,7 @@ class _HistoryChartState extends State<HistoryChart> {
     return Text(text, style: style, textAlign: TextAlign.left);
   }
 
-  LineChartData mainData() {
+  LineChartData mainData(int days) {
     return LineChartData(
       gridData: FlGridData(
         show: true,
@@ -163,38 +212,7 @@ class _HistoryChartState extends State<HistoryChart> {
       maxY: 210,
       lineBarsData: [
         LineChartBarData(
-          spots: [
-            FlSpot(0, 0),
-            FlSpot(1, 0),
-            FlSpot(2, 0),
-            FlSpot(3, 0),
-            FlSpot(4, 0),
-            FlSpot(5, 0),
-            FlSpot(6, 0),
-            FlSpot(7, 0),
-            FlSpot(8, 0),
-            FlSpot(9, 0),
-            FlSpot(10, 0),
-            FlSpot(11, 0),
-            FlSpot(12, 0),
-            FlSpot(13, 0),
-            FlSpot(14, 0),
-            FlSpot(15, 0),
-            FlSpot(16, 0),
-            FlSpot(17, 0),
-            FlSpot(18, 0),
-            FlSpot(19, 0),
-            FlSpot(20, 0),
-            FlSpot(21, 0),
-            FlSpot(22, 0),
-            FlSpot(23, 0),
-            FlSpot(24, 0),
-            FlSpot(25, 0),
-            FlSpot(26, 0),
-            FlSpot(27, 0),
-            FlSpot(28, 0),
-            FlSpot(29, 0),
-          ],
+          spots: getSpots(days),
           isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,

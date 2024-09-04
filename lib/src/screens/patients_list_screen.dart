@@ -3,9 +3,15 @@ import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/list_item.dart';
 import 'package:heart_at_time/src/widgets/list_section.dart';
 
-class PatientsListScreen extends StatelessWidget {
+class PatientsListScreen extends StatefulWidget {
   const PatientsListScreen({super.key});
 
+  @override
+  State<PatientsListScreen> createState() => _PatientsListScreenState();
+}
+
+class _PatientsListScreenState extends State<PatientsListScreen> {
+  bool visible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +48,7 @@ class PatientsListScreen extends StatelessWidget {
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.width * 0.04),
                       child: ListSection(
-                        children: [
-                          ListItem(
-                            name: "Ricardo Escobar",
-                          ),
-                        ],
+                        children: [patient(context)],
                       ),
                     ),
                   ],
@@ -71,6 +73,50 @@ class PatientsListScreen extends StatelessWidget {
               ))
         ],
       ),
+    );
+  }
+
+  Container patient(BuildContext context) {
+    return Container(
+      child: visible
+          ? ExpansionTile(
+              title: Text(
+                "Ricardo Escobar",
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.05),
+              ),
+              shape: Border(),
+              children: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        visible = false;
+                      });
+                    },
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xffFDA5A0)),
+                        fixedSize: MaterialStatePropertyAll(Size(
+                            MediaQuery.of(context).size.width * 0.3,
+                            MediaQuery.of(context).size.height * 0.05)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 255, 113, 105),
+                                        width: 1)))),
+                    child: Text(
+                      "Eliminar",
+                      style: TextStyle(
+                          color: Color(0xffFFF4EA),
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          fontWeight: FontWeight.w100),
+                    )),
+              ],
+            )
+          : Text(""),
     );
   }
 }

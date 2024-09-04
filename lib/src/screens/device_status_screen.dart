@@ -41,12 +41,12 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.favorite_border_outlined,
+                                  Icons.heart_broken_outlined,
                                   color: Color(0xff0096D1),
                                   size: MediaQuery.of(context).size.width * 0.2,
                                 ),
                                 Text(
-                                  "Conectado",
+                                  "Desconectada",
                                   style: TextStyle(
                                     color: Color(0xff0096D1),
                                     fontSize:
@@ -79,7 +79,7 @@ class _DeviceStatusScreenState extends State<DeviceStatusScreen> {
                                             Color.fromARGB(255, 255, 113, 105),
                                         width: 3)))),
                     child: Text(
-                      "Desconectar Banda",
+                      "Reintentar",
                       style: TextStyle(
                           color: Color(0xffFFF4EA),
                           fontSize: MediaQuery.of(context).size.width * 0.06,

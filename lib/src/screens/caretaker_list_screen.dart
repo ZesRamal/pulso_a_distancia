@@ -11,6 +11,7 @@ class CaretakersListScreen extends StatefulWidget {
 }
 
 class _CaretakersListScreenState extends State<CaretakersListScreen> {
+  bool visible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +48,7 @@ class _CaretakersListScreenState extends State<CaretakersListScreen> {
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.width * 0.04),
                       child: ListSection(
-                        children: [
-                          ListItem(
-                            name: "Gildegar Pasillas",
-                          ),
-                        ],
+                        children: [caretaker(context)],
                       ),
                     ),
                   ],
@@ -76,6 +73,50 @@ class _CaretakersListScreenState extends State<CaretakersListScreen> {
               ))
         ],
       ),
+    );
+  }
+
+  Container caretaker(BuildContext context) {
+    return Container(
+      child: visible
+          ? ExpansionTile(
+              title: Text(
+                "Jared Zaragoza",
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.05),
+              ),
+              shape: Border(),
+              children: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        visible = false;
+                      });
+                    },
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xffFDA5A0)),
+                        fixedSize: MaterialStatePropertyAll(Size(
+                            MediaQuery.of(context).size.width * 0.3,
+                            MediaQuery.of(context).size.height * 0.05)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 255, 113, 105),
+                                        width: 1)))),
+                    child: Text(
+                      "Eliminar",
+                      style: TextStyle(
+                          color: Color(0xffFFF4EA),
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          fontWeight: FontWeight.w100),
+                    )),
+              ],
+            )
+          : Text(""),
     );
   }
 }

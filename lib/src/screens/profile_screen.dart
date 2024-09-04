@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:heart_at_time/src/screens/caretaker_list_screen.dart';
 import 'package:heart_at_time/src/screens/device_status_screen.dart';
 import 'package:heart_at_time/src/screens/edit_profile_screen.dart';
@@ -8,6 +11,7 @@ import 'package:heart_at_time/src/screens/welcome_screen.dart';
 import 'package:heart_at_time/src/widgets/bar_button.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,6 +21,30 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  Timer? timer;
+
+  void initTimer() {
+    if (timer != null && timer!.isActive) return;
+
+    timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      // dos :)
+      //job
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initTimer();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showIcon: true,
                 ),
                 Text(
-                  "Oscar Anguiano",
+                  context.watch<HeartRateProvider>().username,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.width * 0.07),

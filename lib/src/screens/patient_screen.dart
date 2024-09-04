@@ -5,19 +5,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:heart_at_time/src/screens/features/models/user_model.dart';
 import 'package:heart_at_time/src/widgets/graph.dart';
-import 'package:heart_at_time/src/widgets/heartRateDisabled.dart';
 import 'package:heart_at_time/src/widgets/heartRateMeter.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
 import 'package:provider/provider.dart';
 
-class MyStateScreen extends StatefulWidget {
-  const MyStateScreen({super.key});
+class PatientStateScreen extends StatefulWidget {
+  const PatientStateScreen({super.key});
 
   @override
-  State<MyStateScreen> createState() => _MyStateScreenState();
+  State<PatientStateScreen> createState() => _PatientStateScreenState();
 }
 
-class _MyStateScreenState extends State<MyStateScreen> {
+class _PatientStateScreenState extends State<PatientStateScreen> {
   int last_bpm = 0;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -36,6 +35,7 @@ class _MyStateScreenState extends State<MyStateScreen> {
     if (timer != null && timer!.isActive) return;
 
     timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      // dos :)
       //job
       setState(() {});
     });
@@ -54,7 +54,7 @@ class _MyStateScreenState extends State<MyStateScreen> {
         child: Center(
           child: Container(
             padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height * 0.11),
+                vertical: MediaQuery.of(context).size.height * 0.048),
             decoration: BoxDecoration(
               color: Color(0xffFFF4EA),
             ),
@@ -67,24 +67,21 @@ class _MyStateScreenState extends State<MyStateScreen> {
                   builder: (context, snapshot) {
                     initTimer();
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return HeartRateDisabled(
-                        bpm: "--",
-                      );
+                      return HeartRateMeter(bpm: last_bpm);
                     }
                     if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     }
                     if (!snapshot.hasData || snapshot.data == null) {
-                      return HeartRateDisabled(
-                        bpm: "--",
+                      return HeartRateMeter(
+                        bpm: 0,
                       );
                     }
 
                     Usuario usuario = snapshot.data!;
                     var latestRecord = usuario.historialBPM.last;
-                    var history = usuario.historialBPM.getRange(
-                        usuario.historialBPM.length - 30,
-                        usuario.historialBPM.length);
+                    var history = usuario.historialBPM;
+                    context.read<HeartRateProvider>().setHistory(history);
                     int bpm = latestRecord['bpm'];
                     last_bpm = bpm;
                     List last10 = history
@@ -101,15 +98,16 @@ class _MyStateScreenState extends State<MyStateScreen> {
                         .read<HeartRateProvider>()
                         .addToHistoryTimes(last10Times);
 
-                    return HeartRateDisabled(
-                      bpm: "--",
+                    return HeartRateMeter(
+                      bpm: bpm,
                     );
                   },
                 ),
                 HeartLine(),
                 InfoCard(
                   title: "Resumen",
-                  info: "No se encuentra conectada alguna banda al dispositivo",
+                  info:
+                      "En este apartado se explica al usuario de manera concisa su estado según las últimas lecturas.",
                 ),
               ],
             ),

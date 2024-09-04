@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/history_graph.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
+import 'package:heart_at_time/src/widgets/patient_history_graph.dart';
 import 'package:heart_at_time/src/widgets/time_selector.dart';
 import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:provider/provider.dart';
 
-class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({super.key});
+class PatientHistoryScreen extends StatefulWidget {
+  const PatientHistoryScreen({super.key});
 
   @override
-  State<HistoryScreen> createState() => _HistoryScreenState();
+  State<PatientHistoryScreen> createState() => _HistoryScreenState();
 }
 
-class _HistoryScreenState extends State<HistoryScreen> {
+class _HistoryScreenState extends State<PatientHistoryScreen> {
   TextEditingController _dateController = TextEditingController();
-
+  int _index = 0;
   int day = DateTime.now().day;
   int month = DateTime.now().month;
   int year = DateTime.now().year;
+  int days = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             child: Center(
               child: Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height * 0.1),
+                    vertical: MediaQuery.of(context).size.height * 0.02),
                 decoration: BoxDecoration(
                   color: Color(0xffFFF4EA),
                 ),
@@ -40,21 +42,104 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       iconName: Icons.access_time_sharp,
                       showIcon: true,
                     ),
-                    TimeSelector(),
                     Container(
                       margin: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.width * 0.03),
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(""), Text("")],
+                          horizontal: MediaQuery.of(context).size.width * 0.1,
+                          vertical: MediaQuery.of(context).size.width * 0.05),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(45),
+                          color: Color(0xff3EBDC6)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(45),
+                              color: _index == 0
+                                  ? Color(0xff0096D1)
+                                  : Color(0xff3EBDC6),
+                            ),
+                            child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _index = 0;
+                                    days = 1;
+                                  });
+                                },
+                                child: Text("Hoy",
+                                    style: TextStyle(
+                                      color: Color(0xffFFF4EA),
+                                    ))),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(45),
+                              color: _index == 1
+                                  ? Color(0xff0096D1)
+                                  : Color(0xff3EBDC6),
+                            ),
+                            child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _index = 1;
+                                    days = 7;
+                                  });
+                                },
+                                child: Text("Semana",
+                                    style: TextStyle(
+                                      color: Color(0xffFFF4EA),
+                                    ))),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(45),
+                              color: _index == 2
+                                  ? Color(0xff0096D1)
+                                  : Color(0xff3EBDC6),
+                            ),
+                            child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _index = 2;
+                                    days = 30;
+                                  });
+                                },
+                                child: Text("Mes",
+                                    style: TextStyle(
+                                      color: Color(0xffFFF4EA),
+                                    ))),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(45),
+                              color: _index == 3
+                                  ? Color(0xff0096D1)
+                                  : Color(0xff3EBDC6),
+                            ),
+                            child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _index = 3;
+                                    days = 365;
+                                  });
+                                },
+                                child: Text("Año",
+                                    style: TextStyle(
+                                      color: Color(0xffFFF4EA),
+                                    ))),
+                          ),
+                        ],
                       ),
                     ),
-                    HistoryChart(),
+                    PatientHistoryChart(day: days),
                     InfoCard(
                       title: "Resumen",
                       info:
-                          "Se explica brevemente al usuario su estado en la fecha consultada.",
+                          "Se explica brevemente al usuario su estado según estado en la fecha consultada.",
                     ),
                   ],
                 ),
