@@ -3,8 +3,6 @@ import 'package:heart_at_time/src/widgets/history_graph.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
 import 'package:heart_at_time/src/widgets/time_selector.dart';
-import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
-import 'package:provider/provider.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});

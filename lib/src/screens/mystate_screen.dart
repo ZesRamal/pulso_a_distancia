@@ -6,7 +6,6 @@ import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
 import 'package:heart_at_time/src/screens/features/models/user_model.dart';
 import 'package:heart_at_time/src/widgets/graph.dart';
 import 'package:heart_at_time/src/widgets/heartRateDisabled.dart';
-import 'package:heart_at_time/src/widgets/heartRateMeter.dart';
 import 'package:heart_at_time/src/widgets/infoCard.dart';
 import 'package:provider/provider.dart';
 

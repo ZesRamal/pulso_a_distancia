@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
-import 'package:heart_at_time/src/widgets/patient_request_list_item.dart';
-import 'package:heart_at_time/src/widgets/request_list_item.dart';
 
 class RequestListScreen extends StatefulWidget {
   const RequestListScreen({super.key});

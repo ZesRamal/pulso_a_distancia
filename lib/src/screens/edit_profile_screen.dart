@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heart_at_time/home_page.dart';
 import 'package:heart_at_time/src/providers/hear_rate_provider.dart';
-import 'package:heart_at_time/src/screens/profile_screen.dart';
 import 'package:heart_at_time/src/widgets/bar_button_section.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
 import 'package:provider/provider.dart';

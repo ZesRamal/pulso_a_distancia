@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:heart_at_time/src/widgets/heart_icon.dart';
-import 'package:heart_at_time/src/widgets/list_item.dart';
 import 'package:heart_at_time/src/widgets/list_section.dart';
 
 class CaretakersListScreen extends StatefulWidget {
