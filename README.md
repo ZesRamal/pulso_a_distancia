@@ -50,7 +50,7 @@ En el móvil, haremos emparejamiento con el módulo de trabajo y en la app nos d
 
 #### Estado:
 
-Activo y en desarrollo.
+En pausa.
 
 #### Roadmap:
 
